@@ -4,7 +4,7 @@
              x:Class="Car.Shop.Views.FlyoutMenuPage"
              Title="FlyoutMenuPage">
 
-    <CollectionView x:Name="MenuCollection" SelectionMode="Single">
+    <CollectionView x:Name="MenuCollection" SelectionMode="Single" SelectionChanged="MenuCollection_SelectionChanged">
 
 
         <CollectionView.ItemTemplate>
