@@ -4,7 +4,32 @@
              x:Class="Car.Shop.Views.FlyoutMenuPage"
              Title="FlyoutMenuPage">
 
-    <CollectionView x:Name="MenuCollection" SelectionMode="Single" SelectionChanged="MenuCollection_SelectionChanged">
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="White" Offset="0.1"/>
+            <GradientStop Color="WhiteSmoke" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Frame  CornerRadius="200" Margin="0,-200,-200,0">
+            <Frame.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Blue" Offset="0.1"/>
+                    <GradientStop Color="Aqua" Offset="1.0"/>
+                </LinearGradientBrush>
+
+            </Frame.Background>
+
+            <Image Source="dotnet_bot.png" WidthRequest="150" VerticalOptions="End" Margin="0,0,50,0" />
+
+        </Frame>
+
+        <CollectionView x:Name="MenuCollection" SelectionMode="Single"  Grid.Row="1" Margin="30,50,0,0">
 
 
         <CollectionView.ItemTemplate>
@@ -23,5 +48,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
-
+    </Grid>
 </ContentPage>

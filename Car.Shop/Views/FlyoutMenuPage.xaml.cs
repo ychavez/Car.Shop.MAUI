@@ -4,6 +4,9 @@ namespace Car.Shop.Views;
 
 public partial class FlyoutMenuPage : ContentPage
 {
+
+    public CollectionView CollectionView;
+
     public FlyoutMenuPage()
     {
         InitializeComponent();
@@ -16,15 +19,9 @@ public partial class FlyoutMenuPage : ContentPage
 
         MenuCollection.ItemsSource = menuList;
 
-    }
-
-    private void MenuCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var item = e.CurrentSelection.FirstOrDefault() as FlyoutPageItem;
-        if (item is not null)
-        {
-            /// cambiar la pagina
-        }
+        CollectionView = MenuCollection;
 
     }
+
+  
 }
