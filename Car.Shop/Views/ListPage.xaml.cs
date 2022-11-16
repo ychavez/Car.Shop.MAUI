@@ -24,7 +24,7 @@ public partial class ListPage : ContentPage
 			if (textSearched == (srchVehiculo.Text ?? ""))
 				return;
 
-			textSearched = srchVehiculo.Text;
+			textSearched = srchVehiculo.Text;	
 
 			var carSearched = new RestService().GetCars().Where(x =>
 			(x.Model?.ToUpper().Contains(textSearched) ?? false) ||
