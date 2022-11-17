@@ -24,11 +24,7 @@ public partial class ListPage : ContentPage
         timer.Tick += Timmer_Tick;
 
 
-        WeakReferenceMessenger.Default.Register<string>("Holaaa", (y, x) =>
-         {
 
-
-        });
 
     }
 
