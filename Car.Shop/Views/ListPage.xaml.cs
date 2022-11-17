@@ -1,4 +1,6 @@
 using Car.Shop.Context;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 using System.Diagnostics;
 
 namespace Car.Shop.Views;
@@ -20,6 +22,13 @@ public partial class ListPage : ContentPage
         timer.Start();
 
         timer.Tick += Timmer_Tick;
+
+
+        WeakReferenceMessenger.Default.Register<string>("Holaaa", (y, x) =>
+         {
+
+
+        });
 
     }
 
@@ -50,6 +59,13 @@ public partial class ListPage : ContentPage
 
         timer.Stop();
         timer.Start();
+
+    }
+
+    private async void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new AddCar());
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Car.Shop.Models;
+using System.Text;
 using System.Text.Json;
 
 namespace Car.Shop.Context
@@ -27,6 +28,20 @@ namespace Car.Shop.Context
             }
 
             throw new Exception("Error al tratar de obtener la informacion");
+        }
+
+        public void SetCar(CarModel car) 
+        {
+            var json = JsonSerializer.Serialize(car);
+
+            var data = new StringContent(json, Encoding.UTF8 ,"application/json");
+
+            var response = httpClient.PostAsync("carsForSalesApi", data).Result;
+
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception("Error al tratar de enviar la informacion");
+
         }
 
 
