@@ -1,7 +1,6 @@
 using Car.Shop.Context;
+using Car.Shop.Models;
 using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
-using System.Diagnostics;
 
 namespace Car.Shop.Views;
 
@@ -13,8 +12,7 @@ public partial class ListPage : ContentPage
     public ListPage()
     {
         InitializeComponent();
-        CarsList.ItemsSource = new RestService().GetCars();
-
+        LoadList();
 
         timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(1);
@@ -23,10 +21,22 @@ public partial class ListPage : ContentPage
 
         timer.Tick += Timmer_Tick;
 
+        if (!WeakReferenceMessenger.Default.IsRegistered<string>(""))
+            WeakReferenceMessenger.Default.Register<string>("", (o, s) =>
+            {
+
+                LoadList();
+            });
 
 
 
+        void LoadList()
+        {
+            CarsList.ItemsSource = new RestService().GetCars();
+        }
     }
+
+
 
     private void Timmer_Tick(object x, EventArgs y)
     {
@@ -62,6 +72,14 @@ public partial class ListPage : ContentPage
     {
 
         await Navigation.PushAsync(new AddCar());
+
+    }
+
+    private async void btnFavourite_Clicked(object sender, EventArgs e)
+    {
+        var favoriteResult = await new DataContext().SetasFavorite((CarModel)((ImageButton)sender).BindingContext);
+
+        await DisplayAlert("Auto Favorito", favoriteResult ? "Auto agregado correctamente" : "El auto ya se encuentra en favoritos", "Ok");
 
     }
 }

@@ -41,7 +41,7 @@ public partial class AddCar : ContentPage
 
         await Navigation.PopAsync();
 
-        WeakReferenceMessenger.Default.Send<String>("Hola");
+        WeakReferenceMessenger.Default.Send<string>("Hola");
 
     }
 }

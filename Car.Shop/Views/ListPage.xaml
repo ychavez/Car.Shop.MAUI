@@ -27,7 +27,7 @@
                                 <Label Text="{Binding Price, StringFormat='{0:c}'}"/>
                             </VerticalStackLayout>
 
-                        <ImageButton Grid.Column="2" Source="favourite.png" x:Name="btnFavourite" />
+                        <ImageButton Grid.Column="2" Source="favourite.png" x:Name="btnFavourite" Clicked="btnFavourite_Clicked" />
                         </Grid>
 
                     </ViewCell>

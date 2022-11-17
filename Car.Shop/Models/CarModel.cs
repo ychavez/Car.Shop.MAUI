@@ -1,7 +1,10 @@
-﻿namespace Car.Shop.Models;
+﻿using SQLite;
+
+namespace Car.Shop.Models;
 
 public class CarModel
 {
+    [PrimaryKey]
     public int Id { get; set; }
     public string Brand { get; set; }
     public string Model { get; set; }
