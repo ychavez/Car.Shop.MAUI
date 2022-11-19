@@ -6,24 +6,22 @@ namespace Car.Shop.Views;
 
 public partial class MapPage : ContentPage
 {
-	public MapPage()
+    Microsoft.Maui.Controls.Maps.Map map;
+    public MapPage()
 	{
 		InitializeComponent();
-      
-        map.IsShowingUser = true;
-    
 
-	}
+
+    }
 
     protected async override void OnAppearing()
     {
         base.OnAppearing();
 
-
+        await Task.Delay(5000);
         var location = await Geolocation.Default.GetLocationAsync();
-        MapSpan mapSpan = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(5));
-        map.MoveToRegion(mapSpan);
-
+        map = new(MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(5)));
+        map.IsShowingUser = true;
         var carsForSale = new RestService().GetCars();
 
         foreach (var car in carsForSale)
@@ -34,6 +32,7 @@ public partial class MapPage : ContentPage
             map.Pins.Add(new Pin { Label = car.Description, Location = new Location(car.Lat.Value, car.Lon.Value) });
         }
 
+        Content = map;
     }
 
 }

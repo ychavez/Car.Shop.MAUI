@@ -5,6 +5,7 @@
              Title="ListPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Agregar" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="Leer coches" Clicked="ToolbarItem_Clicked_1"/>
     </ContentPage.ToolbarItems>
     
     <VerticalStackLayout>

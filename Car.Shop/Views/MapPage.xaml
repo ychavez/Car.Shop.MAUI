@@ -3,5 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Car.Shop.Views.MapPage"
              Title="MapPage">
-    <Map x:Name="map"/>
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <ActivityIndicator IsRunning="True" VerticalOptions="CenterAndExpand"></ActivityIndicator>
+        <Label Text="Cargando..." HorizontalOptions="Center"/>
+
+    </StackLayout>
+    
 </ContentPage>

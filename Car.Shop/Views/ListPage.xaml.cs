@@ -82,4 +82,38 @@ public partial class ListPage : ContentPage
         await DisplayAlert("Auto Favorito", favoriteResult ? "Auto agregado correctamente" : "El auto ya se encuentra en favoritos", "Ok");
 
     }
+
+    private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
+    {
+
+        new RestService().GetCars().ForEach(async x =>
+        {
+
+            await TextToSpeech.Default.SpeakAsync(x.Description);
+
+
+        });
+
+
+        await TextToSpeech.Default.SpeakAsync("Tomando screenshot");
+
+        if (Screenshot.Default.IsCaptureSupported)
+        {
+            IScreenshotResult screen = await Screenshot.Default.CaptureAsync();
+
+
+            var a = await screen.OpenReadAsync();
+
+        }
+
+        await TextToSpeech.Default.SpeakAsync("Encendiendo lampara");
+
+        await Flashlight.Default.TurnOnAsync();
+
+        await TextToSpeech.Default.SpeakAsync("apagando lampara");
+
+        await Flashlight.Default.TurnOffAsync();
+
+
+    }
 }
